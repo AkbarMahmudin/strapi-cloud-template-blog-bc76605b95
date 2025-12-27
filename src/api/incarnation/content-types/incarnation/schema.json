@@ -1,0 +1,53 @@
+{
+  "kind": "singleType",
+  "collectionName": "incarnations",
+  "info": {
+    "singularName": "incarnation",
+    "pluralName": "incarnations",
+    "displayName": "Incarnation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fullname": {
+      "type": "string",
+      "required": true
+    },
+    "role": {
+      "type": "string",
+      "required": true
+    },
+    "headline": {
+      "type": "string"
+    },
+    "experienceYear": {
+      "type": "integer",
+      "default": 1
+    },
+    "focus": {
+      "type": "string"
+    },
+    "attributes": {
+      "type": "component",
+      "component": "element.attribute",
+      "repeatable": true
+    },
+    "stigmas": {
+      "type": "component",
+      "component": "shared.text",
+      "repeatable": true
+    },
+    "scenarios": {
+      "type": "component",
+      "component": "element.scenario",
+      "repeatable": true
+    },
+    "contacts": {
+      "type": "component",
+      "component": "shared.link",
+      "repeatable": true
+    }
+  }
+}

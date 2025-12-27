@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_shared_skills",
+  "collectionName": "components_element_attributes",
   "info": {
-    "displayName": "Skill"
+    "displayName": "Attribute"
   },
   "options": {},
   "attributes": {
@@ -11,16 +11,15 @@
     },
     "type": {
       "type": "enumeration",
-      "default": "secondary",
+      "default": "core",
       "enum": [
         "core",
-        "secondary",
-        "signature"
+        "secondary"
       ]
     },
     "category": {
       "type": "enumeration",
-      "required": true,
+      "default": "language",
       "enum": [
         "language",
         "framework",

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * contact service
+ * incarnation service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::contact.contact');
+module.exports = createCoreService('api::incarnation.incarnation');

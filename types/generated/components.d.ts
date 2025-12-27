@@ -1,5 +1,46 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ElementAttribute extends Struct.ComponentSchema {
+  collectionName: 'components_element_attributes';
+  info: {
+    displayName: 'Attribute';
+  };
+  attributes: {
+    category: Schema.Attribute.Enumeration<
+      ['language', 'framework', 'database', 'devops', 'concept']
+    > &
+      Schema.Attribute.DefaultTo<'language'>;
+    level: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 10;
+          min: 1;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<1>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    type: Schema.Attribute.Enumeration<['core', 'secondary']> &
+      Schema.Attribute.DefaultTo<'core'>;
+  };
+}
+
+export interface ElementScenario extends Struct.ComponentSchema {
+  collectionName: 'components_element_scenarios';
+  info: {
+    displayName: 'Scenario';
+  };
+  attributes: {
+    companyName: Schema.Attribute.String & Schema.Attribute.Required;
+    descriptions: Schema.Attribute.Component<'shared.rich-text', true>;
+    endDate: Schema.Attribute.Date;
+    isCurrent: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    location: Schema.Attribute.String & Schema.Attribute.Required;
+    role: Schema.Attribute.String & Schema.Attribute.Required;
+    startDate: Schema.Attribute.Date & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedLink extends Struct.ComponentSchema {
   collectionName: 'components_shared_links';
   info: {
@@ -43,7 +84,7 @@ export interface SharedRichText extends Struct.ComponentSchema {
     icon: 'align-justify';
   };
   attributes: {
-    body: Schema.Attribute.RichText;
+    description: Schema.Attribute.Text;
   };
 }
 
@@ -62,31 +103,6 @@ export interface SharedSeo extends Struct.ComponentSchema {
   };
 }
 
-export interface SharedSkill extends Struct.ComponentSchema {
-  collectionName: 'components_shared_skills';
-  info: {
-    displayName: 'Skill';
-  };
-  attributes: {
-    category: Schema.Attribute.Enumeration<
-      ['language', 'framework', 'database', 'devops', 'concept']
-    > &
-      Schema.Attribute.Required;
-    level: Schema.Attribute.Integer &
-      Schema.Attribute.SetMinMax<
-        {
-          max: 10;
-          min: 1;
-        },
-        number
-      > &
-      Schema.Attribute.DefaultTo<1>;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    type: Schema.Attribute.Enumeration<['core', 'secondary', 'signature']> &
-      Schema.Attribute.DefaultTo<'secondary'>;
-  };
-}
-
 export interface SharedSlider extends Struct.ComponentSchema {
   collectionName: 'components_shared_sliders';
   info: {
@@ -99,32 +115,28 @@ export interface SharedSlider extends Struct.ComponentSchema {
   };
 }
 
-export interface SharedWorkExperience extends Struct.ComponentSchema {
-  collectionName: 'components_shared_work_experiences';
+export interface SharedText extends Struct.ComponentSchema {
+  collectionName: 'components_shared_texts';
   info: {
-    displayName: 'Work Experience';
+    displayName: 'Text';
   };
   attributes: {
-    companyName: Schema.Attribute.String & Schema.Attribute.Required;
-    description: Schema.Attribute.RichText & Schema.Attribute.Required;
-    endDate: Schema.Attribute.Date;
-    isCurrent: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    role: Schema.Attribute.String & Schema.Attribute.Required;
-    startDate: Schema.Attribute.Date & Schema.Attribute.Required;
+    content: Schema.Attribute.String;
   };
 }
 
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'element.attribute': ElementAttribute;
+      'element.scenario': ElementScenario;
       'shared.link': SharedLink;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
-      'shared.skill': SharedSkill;
       'shared.slider': SharedSlider;
-      'shared.work-experience': SharedWorkExperience;
+      'shared.text': SharedText;
     }
   }
 }

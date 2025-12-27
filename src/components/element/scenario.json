@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_shared_work_experiences",
+  "collectionName": "components_element_scenarios",
   "info": {
-    "displayName": "Work Experience"
+    "displayName": "Scenario"
   },
   "options": {},
   "attributes": {
@@ -13,9 +13,17 @@
       "type": "string",
       "required": true
     },
+    "location": {
+      "type": "string",
+      "required": true
+    },
     "startDate": {
       "type": "date",
       "required": true
+    },
+    "isCurrent": {
+      "type": "boolean",
+      "default": true
     },
     "endDate": {
       "type": "date",
@@ -30,13 +38,10 @@
         }
       }
     },
-    "isCurrent": {
-      "type": "boolean",
-      "default": false
-    },
-    "description": {
-      "type": "richtext",
-      "required": true
+    "descriptions": {
+      "type": "component",
+      "component": "shared.rich-text",
+      "repeatable": true
     }
   },
   "config": {}
