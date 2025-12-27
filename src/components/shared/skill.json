@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_shared_skills",
+  "info": {
+    "displayName": "Skill"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "default": "secondary",
+      "enum": [
+        "core",
+        "secondary",
+        "signature"
+      ]
+    },
+    "category": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "language",
+        "framework",
+        "database",
+        "devops",
+        "concept"
+      ]
+    },
+    "level": {
+      "type": "integer",
+      "default": 1,
+      "min": 1,
+      "max": 10
+    }
+  },
+  "config": {}
+}
