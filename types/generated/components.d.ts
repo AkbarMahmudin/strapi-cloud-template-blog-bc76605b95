@@ -48,6 +48,7 @@ export interface SharedLink extends Struct.ComponentSchema {
   };
   attributes: {
     isBlank: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    isPrimary: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     label: Schema.Attribute.String & Schema.Attribute.Required;
     url: Schema.Attribute.String & Schema.Attribute.Required;
   };
@@ -84,7 +85,7 @@ export interface SharedRichText extends Struct.ComponentSchema {
     icon: 'align-justify';
   };
   attributes: {
-    description: Schema.Attribute.Text;
+    description: Schema.Attribute.String;
   };
 }
 
@@ -121,7 +122,7 @@ export interface SharedText extends Struct.ComponentSchema {
     displayName: 'Text';
   };
   attributes: {
-    content: Schema.Attribute.String;
+    name: Schema.Attribute.String;
   };
 }
 

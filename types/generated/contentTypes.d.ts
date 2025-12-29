@@ -582,8 +582,8 @@ export interface ApiIncarnationIncarnation extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    ctas: Schema.Attribute.Component<'shared.link', true>;
     experienceYear: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<1>;
-    focus: Schema.Attribute.String;
     fullname: Schema.Attribute.String & Schema.Attribute.Required;
     headline: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -595,6 +595,7 @@ export interface ApiIncarnationIncarnation extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     role: Schema.Attribute.String & Schema.Attribute.Required;
     scenarios: Schema.Attribute.Component<'element.scenario', true>;
+    specialization: Schema.Attribute.String;
     stigmas: Schema.Attribute.Component<'shared.text', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
